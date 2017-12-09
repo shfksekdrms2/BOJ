@@ -11,20 +11,16 @@ public class plusCycle {
 		int unit;
 		int sum;
 		int cnt=0;
-		if(input < 10){
-			System.out.println("1");
-		}else{
-			while(true){
-				cnt++;
-				sum = (value/10) + (value%10);
-				unit = (value%10)*10;
-				unit += sum%10;
-				value = unit;
-				if(input == value){
-					break;
-				}
+		while(true){
+			cnt++;
+			sum = (value/10) + (value%10);
+			unit = (value%10)*10;
+			unit += sum%10;
+			value = unit;
+			if(input == value){
+				break;
 			}
-			System.out.println(cnt);
 		}
+		System.out.println(cnt);
 	}
 }
