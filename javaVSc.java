@@ -9,15 +9,24 @@ public class javaVSc {
 		char[] input = sc.next().toCharArray();
 		int i;
 		String result="";
-		boolean error =  true;
+		boolean error =  false;
 		int cnt[] = new int[2];
+		//처음, 마지막이  _ 인 경우
+		//처음이 대문자로 시작하는 경우
+		if(input[0] == '_' || 
+				input[input.length-1] == '_' ||
+				(input[0] >= 'A' && input[0] <= 'Z')){
+			System.out.println("Error!");
+			return;
+		}
 		for(i=0; i<input.length; i++){
 			if(input[i] == '_'){
 				//연속으로 _ 가 들어 왔을경우에 대한 예외
-				if(i+1 < input.length){
+				//_ 다음에 소문자가 오지 않을 경우에 대한 예외
+				if(input[i+1] != '_' &&
+						(input[i+1] >= 'a' && input[i+1] <= 'z')){
 					i++;
 					input[i] -= 32; 
-					error = false;
 					cnt[0] = 1;
 				}else{
 					error = true;
@@ -26,7 +35,6 @@ public class javaVSc {
 			}else if(input[i] >= 'A' && input[i] <= 'Z'){
 				result += "_";
 				input[i] += 32;
-				error = false;
 				cnt[1] = 1;
 			}
 			result += input[i];
@@ -36,29 +44,7 @@ public class javaVSc {
 			error = true;
 		}
 		if(error == false){
-			//처음이  _ 인 경우
-			//처음이 대문자로 시작하는 경우
-			if(result.substring(0, 1).equals("_") || 
-					(result.substring(0, 1).charAt(0) >= 'A' && result.substring(0, 1).charAt(0) <= 'Z')){
-				System.out.println("Error!");
-			}else{
-				//문자가 소/대문자, _ 인 경우인지 체크
-				for(i=0; i<result.length(); i++){
-					if((result.substring(i, i+1).charAt(0) >= 'A' && result.substring(i, i+1).charAt(0) <= 'Z') ||
-							result.substring(i, i+1).charAt(0) >= 'a' && result.substring(i, i+1).charAt(0) <= 'z' ||
-							result.substring(i, i+1).charAt(0) >= '_'){
-						error = false;
-					}else{
-						error = true;
-						break;
-					}
-				}
-				if(error == false){
-					System.out.println(result);
-				}else{
-					System.out.println("Error!");
-				}
-			}
+			System.out.println(result);
 		}else{
 			System.out.println("Error!");
 		}
