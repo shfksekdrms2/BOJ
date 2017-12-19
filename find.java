@@ -11,17 +11,20 @@ public class find {
 		char[] findArr = sc.nextLine().toCharArray();
 		int[] move = new int[findArr.length+1];
 		int i, j;
-		String str = "";
-		String prefix = "";
-		String suffix = "";
+		StringBuffer str = new StringBuffer("");
+		StringBuffer prefix;
+		StringBuffer suffix;
 		move[0] = -1;
 		for(i=0; i<findArr.length; i++){
-			str += findArr[i];
-			prefix = "";
-			suffix = "";
+			str = new StringBuffer(str).append(findArr[i]);
+			prefix = new StringBuffer();
+			suffix = new StringBuffer();
 			for(j=0; j<str.length()/2; j++){
-				prefix += str.charAt(j);
-				suffix = str.charAt(str.length()-j-1) + suffix;
+//				prefix += str.charAt(j);
+				prefix = new StringBuffer(prefix).append(str.charAt(j));
+//				suffix = str.charAt(str.length()-j-1) + suffix;
+//				System.out.println(str.charAt(str.length()-j-1));
+				suffix = new StringBuffer(suffix).insert(0, str.charAt(str.length()-j-1));
 //				System.out.println("prefix: "+prefix);
 //				System.out.println("suffix: "+suffix);
 //
@@ -30,7 +33,7 @@ public class find {
 //				}
 //				System.out.println();
 //				System.out.println("-------------");
-				if(prefix.equals(suffix)){
+				if(prefix.toString().equals(suffix.toString())){
 //					System.out.println("i: "+i);
 //					System.out.println("success");
 					//move 배열에 prefix와 suffix의 최대 경계값에 대한 길이 입력
@@ -60,7 +63,6 @@ public class find {
 			}
 			if(findStr == true){
 //				System.out.println("after move["+j+"]: "+move[j]);
-				//다맞은 경우에 1칸 이동
 				list.add(i+1);
 				//맞은 경우 위치 이동
 				i += j-move[j];
