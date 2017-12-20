@@ -3,7 +3,7 @@ package backjoon.BOJ;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 //1786
 public class find {
@@ -25,7 +25,7 @@ public class find {
 			}
 		}
 		j=0;
-		LinkedList<Integer> list = new LinkedList<>();
+		ArrayList<Integer> arrayList = new ArrayList<>();
 		for(i=0; i<arr.length; i++){
 			//중간 부분 뛰어넘는 단계
 			while(j>0 && arr[i] != findArr[j]){
@@ -33,7 +33,7 @@ public class find {
 			}
 			if(arr[i] == findArr[j]){ 
 				if(j==findArr.length-1){ 
-					list.add(i-findArr.length+2); 
+					arrayList.add(i-findArr.length+2); 
 					j = move[j]; 
 				}else{ 
 					j++; 
@@ -41,9 +41,9 @@ public class find {
 			}
 		}
 
-		System.out.println(list.size());
-		for(i=0; i<list.size(); i++){
-			System.out.print(list.get(i)+" ");
+		System.out.println(arrayList.size());
+		for(i=0; i<arrayList.size(); i++){
+			System.out.print(arrayList.get(i)+" ");
 		}
 		
 	}
