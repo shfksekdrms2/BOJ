@@ -1,74 +1,46 @@
 package backjoon.BOJ;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 //1786
 public class find {
-	public static void main(String[] args){
-		Scanner sc = new Scanner(System.in);
-		char[] arr = sc.nextLine().toCharArray();
-		char[] findArr = sc.nextLine().toCharArray();
-		int[] move = new int[findArr.length+1];
-		int i, j;
-		StringBuffer str = new StringBuffer("");
-		StringBuffer prefix;
-		StringBuffer suffix;
-		move[0] = -1;
-		for(i=0; i<findArr.length; i++){
-			str = new StringBuffer(str).append(findArr[i]);
-			prefix = new StringBuffer();
-			suffix = new StringBuffer();
-			for(j=0; j<str.length()/2; j++){
-//				prefix += str.charAt(j);
-				prefix = new StringBuffer(prefix).append(str.charAt(j));
-//				suffix = str.charAt(str.length()-j-1) + suffix;
-//				System.out.println(str.charAt(str.length()-j-1));
-				suffix = new StringBuffer(suffix).insert(0, str.charAt(str.length()-j-1));
-//				System.out.println("prefix: "+prefix);
-//				System.out.println("suffix: "+suffix);
-//
-//				for(int k=0; k<move.length; k++){
-//					System.out.print(move[k]+" ");
-//				}
-//				System.out.println();
-//				System.out.println("-------------");
-				if(prefix.toString().equals(suffix.toString())){
-//					System.out.println("i: "+i);
-//					System.out.println("success");
-					//move 배열에 prefix와 suffix의 최대 경계값에 대한 길이 입력
-					move[i+1] = prefix.length();
-					break;
-				}
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+
+		char[] arr =  br.readLine().toCharArray();
+		char[] findArr = br.readLine().toCharArray();
+		int[] move = new int[findArr.length];
+		int i, j=0;
+		for(i = 1; i< move.length; i++){ 
+			//중간 부분 뛰어넘는 단계
+			while(j > 0 && findArr[i] != findArr[j]){
+				j = move[j-1];
+			}
+			if(findArr[i] == findArr[j]){
+				move[i] = ++j; 
 			}
 		}
-//		System.out.println("move.length: "+ move.length);
-//		for(i=0; i<move.length; i++){
-//			System.out.print(move[i]+" ");
-//		}
-		boolean findStr = true;
+		j=0;
 		LinkedList<Integer> list = new LinkedList<>();
-		for(i=0; i<arr.length-findArr.length+1;){
-			findStr = true;
-			for(j=0; j<findArr.length; j++){
-//				System.out.println("arr["+(i+j)+"]: "+ arr[i+j]);
-//				System.out.println("findArr["+j+"]: "+ findArr[j]);
-				if(arr[i+j] != findArr[j]){
-					//틀린 경우 위치 이동
-					i += j-move[j];
-//					System.out.println("before move["+j+"]: "+move[j]);
-					findStr = false;
-					break;
-				}
+		for(i=0; i<arr.length; i++){
+			//중간 부분 뛰어넘는 단계
+			while(j>0 && arr[i] != findArr[j]){
+				j = move[j-1];
 			}
-			if(findStr == true){
-//				System.out.println("after move["+j+"]: "+move[j]);
-				list.add(i+1);
-				//맞은 경우 위치 이동
-				i += j-move[j];
+			if(arr[i] == findArr[j]){ 
+				if(j==findArr.length-1){ 
+					list.add(i-findArr.length+2); 
+					j = move[j]; 
+				}else{ 
+					j++; 
+				} 
 			}
-//			System.out.println("-------------------");
 		}
+
 		System.out.println(list.size());
 		for(i=0; i<list.size(); i++){
 			System.out.print(list.get(i)+" ");
