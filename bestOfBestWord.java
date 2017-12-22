@@ -1,26 +1,23 @@
 package backjoon.BOJ;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
 //1371
 public class bestOfBestWord {
-	public static void main(String[] args) throws IOException{
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
 		String input;
 		int[] arr = new int[26];
 		int i;
-		while((input = br.readLine()) != null){
+		while(sc.hasNextLine()){
+			input = sc.nextLine();
 			for(i=0; i<input.length(); i++){
 				if(!input.substring(i, i+1).equals(" ")){
 					arr[(int)input.substring(i, i+1).charAt(0)-97]++;
-//					System.out.print((int)input.substring(i, i+1).charAt(0)+" ");
 				}
 			}
 		}
-		br.close();
+		sc.close();
 		int maxValue = Integer.MIN_VALUE;
 		for(i=0; i<arr.length; i++){
 			if(maxValue < arr[i]){
@@ -29,7 +26,7 @@ public class bestOfBestWord {
 		}
 		for(i=0; i<arr.length; i++){
 			if(arr[i] == maxValue){
-				System.out.print(arr[i]);
+				System.out.print((char)(i+97));
 			}
 		}
 	}
