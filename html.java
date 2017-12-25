@@ -8,37 +8,40 @@ public class html {
 	static String hr = "<hr>";
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
-//		String input;
 		String[] inputArr;
 		String output="";
-		int i, j, k=0;
+		int i, j;
 //		while(sc.hasNextLine()){
 		for(j=0; j<12; j++){
-//			input = sc.nextLine();
-			inputArr = sc.nextLine().split("");			
+			inputArr = sc.nextLine().split(" ");
+//			for(int k=0; k<inputArr.length; k++){
+//				System.out.println("inputArr["+k+"]: "+ inputArr[k]);
+//			}
 			for(i=0; i<inputArr.length; i++){
 				if(inputArr[i].equals(br)){
-					output += "\n";
-//					k=0;
+					System.out.println(output);
+					System.out.println();
+					output = "";
 					continue;
 				}else if(inputArr[i].equals(hr)){
-					output += "\n--------------------------------------------------------------------------------";
-//					k=80;
+					System.out.println(output);
+					System.out.println("--------------------------------------------------------------------------------");
+					output="";
 					continue;
 				}
-				
-//				String token = 
-				if(k/80 >= 1){
-					output += "\n";
+				if((output.length() + inputArr[i].length() + 1) >= 80){
+					System.out.println(output);
+					output = "";
+					continue;
 				}
-				output += input.substring(i, i+1);
-				k++;
+				if(!output.equals("")){
+					output += " " + inputArr[i];
+				}else{
+					output += inputArr[i];
+				}
 			}
-			
+//			System.out.println("end output :"+ output);
 //		}
 		}
-		
-		
-		System.out.print(output);
 	}
 }
