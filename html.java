@@ -11,27 +11,33 @@ public class html {
 		String[] inputArr;
 		String output="";
 		int i, j;
-//		while(sc.hasNextLine()){
-		for(j=0; j<12; j++){
+		while(sc.hasNextLine()){
+//		for(j=0; j<13; j++){
 			inputArr = sc.nextLine().split(" ");
 //			for(int k=0; k<inputArr.length; k++){
-//				System.out.println("inputArr["+k+"]: "+ inputArr[k]);
+//				System.out.println("inputArr["+k+"]:"+ inputArr[k]);
 //			}
 			for(i=0; i<inputArr.length; i++){
+				if(inputArr[i].equals("")){
+					continue;
+				}
 				if(inputArr[i].equals(br)){
 					System.out.println(output);
-					System.out.println();
 					output = "";
 					continue;
 				}else if(inputArr[i].equals(hr)){
-					System.out.println(output);
+					if(output.equals("")){
+						System.out.print(output);
+					}else{
+						System.out.println(output);
+					}
 					System.out.println("--------------------------------------------------------------------------------");
 					output="";
 					continue;
 				}
 				if((output.length() + inputArr[i].length() + 1) >= 80){
 					System.out.println(output);
-					output = "";
+					output = inputArr[i];
 					continue;
 				}
 				if(!output.equals("")){
@@ -41,7 +47,9 @@ public class html {
 				}
 			}
 //			System.out.println("end output :"+ output);
-//		}
+		}
+		if(!output.equals("")){
+			System.out.print(output);
 		}
 	}
 }
