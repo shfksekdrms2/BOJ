@@ -1,4 +1,4 @@
-package backjoon;
+package backjoon.BOJ;
 
 import java.util.Scanner;
 //10872

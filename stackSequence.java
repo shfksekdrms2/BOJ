@@ -1,4 +1,4 @@
-package backjoon;
+package backjoon.BOJ;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -6,8 +6,8 @@ import java.util.Scanner;
 //1874
 public class stackSequence {
 	public static void main(String[] args){
-		ArrayList<Integer> list = new ArrayList<Integer>(); //ÃÖÃÊ list
-		ArrayList<Integer> list2 = new ArrayList<Integer>(); //°¡´ÉÇÑÁö È®ÀÎÇÏ´Â list
+		ArrayList<Integer> list = new ArrayList<Integer>(); //ï¿½ï¿½ï¿½ï¿½ list
+		ArrayList<Integer> list2 = new ArrayList<Integer>(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï´ï¿½ list
 		ArrayList<String> listTotal = new ArrayList<String>();
 		Scanner sc = new Scanner(System.in);
 		boolean success = true;
