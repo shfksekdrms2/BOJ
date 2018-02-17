@@ -49,7 +49,11 @@ public class html {
 //			System.out.println("end output :"+ output);
 		}
 		if(!output.equals("")){
-			System.out.print(output);
+			if(output.length() < 80){
+				System.out.print(output+" ");
+			}else{
+				System.out.println(output);
+			}
 		}
 	}
 }
