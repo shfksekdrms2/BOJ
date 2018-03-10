@@ -29,8 +29,6 @@ public class Main {
 		if (row == arr.length - 1 && col == arr[row].length - 1) {
 			return 1;
 		}
-//		System.out.println("row: " + row + " col: " + col);
-//		System.out.println("row + arr[row][col]: "+(row + arr[row][col]));
 		// move down
 		if (!isOutOfArraySize(arr, row + arr[row][col], col)) {
 			cnt += findJumpCnt(arr, row + arr[row][col], col, visit);
