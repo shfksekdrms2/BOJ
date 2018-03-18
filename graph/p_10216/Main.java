@@ -25,19 +25,6 @@ public class Main {
 				checkArr(row[i], col[i], arr[row[i]][col[i]], checkArr);
 			}
 
-			// System.out.println();
-			// for(int i=0; i< checkArr.length; i++){
-			// for(int j=0; j<checkArr[i].length;j++){
-			// if(checkArr[i][j]){
-			// System.out.print(1+" ");
-			// }else{
-			// System.out.print(0+" ");
-			// }
-			// }
-			// System.out.println();
-			// }
-			// System.out.println("-------------------------------------------------");
-
 			int cnt = 0;
 			for (int i = 0; i < N; i++) {
 				if (checkArr[row[i]][col[i]] == true && visit[row[i]][col[i]] == false) {
@@ -47,18 +34,6 @@ public class Main {
 			}
 			System.out.println(cnt);
 
-			// System.out.println();
-			// for(int i=0; i< visit.length; i++){
-			// for(int j=0; j<visit[i].length;j++){
-			// if(visit[i][j]){
-			// System.out.print(1+" ");
-			// }else{
-			// System.out.print(0+" ");
-			// }
-			// }
-			// System.out.println();
-			// }
-			// System.out.println("-------------------------------------------------");
 		}
 	}
 
