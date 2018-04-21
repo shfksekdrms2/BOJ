@@ -26,21 +26,18 @@ public class Main {
 
 	private static int calcMaxCost(int[] input, int c, int w, int max) {
 
-		int cnt = 0;
+		int beforCnt = 0, cnt = 0;
 		int result = Integer.MIN_VALUE;
-		int remain = 0;
 		System.out.println("max: " + max);
 		for (int i = 1; i <= max; i++) {
 			cnt = 0;
 			for (int j = 0; j < input.length; j++) {
-//				remain = input[j] % i;
+				beforCnt = cnt;
 				cnt += input[j] / i;
-//				if (remain == 0) {
-//					cnt--;
-//				}
 			}
-			System.out.println("cnt: " + cnt );
-			if (i * w - c > 0){
+			System.out.println("cnt: " + cnt);
+			if (i * w - c > 0) {
+				System.out.println("enter");
 				result = Integer.max(result, cnt * (i * w - c));
 			}
 		}
