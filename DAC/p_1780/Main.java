@@ -2,7 +2,10 @@ package backjoon.BOJ.DAC.p_1780;
 
 import java.util.Scanner;
 
-//1780
+/*
+ * https://www.acmicpc.net/problem/1780
+ * 종이의 개수
+ */
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
