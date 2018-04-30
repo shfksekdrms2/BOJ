@@ -14,34 +14,34 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String input;
 		char[] inputChar;
+		boolean isSurprisingString;
 
-		boolean isSurprisingString = true;
+		StringBuilder sb = new StringBuilder();
 		while ((input = br.readLine()) != null) {
 			if (input.equals("*")) {
 				break;
 			}
 			inputChar = input.toCharArray();
+			isSurprisingString = true;
 
-			int between = 1;
 			ArrayList<String> list = new ArrayList<>();
-			for (int i = 0; i < inputChar.length - 2 && isSurprisingString; i++) {
-				for (int j = 0; j < inputChar.length - between && isSurprisingString; j++) {
-					if (list.contains("" + inputChar[j] + inputChar[j + between])) {
+			for (int i = 1; i < inputChar.length && isSurprisingString; i++) {
+				for (int j = 0; j < inputChar.length - i && isSurprisingString; j++) {
+					if (list.contains(String.valueOf(inputChar[j]) + String.valueOf(inputChar[j + i]))) {
 						isSurprisingString = false;
 						break;
 					}
-					list.add("" + inputChar[j] + inputChar[j + between]);
+					list.add(String.valueOf(inputChar[j]) + String.valueOf(inputChar[j + i]));
 				}
-				between++;
 				list.clear();
 			}
 
 			if (isSurprisingString) {
-				System.out.println(input + " is surprising.");
+				sb.append(input + " is surprising.\n");
 			} else {
-				System.out.println(input + " is NOT surprising.");
+				sb.append(input + " is NOT surprising.\n");
 			}
 		}
-
+		System.out.println(sb.toString());
 	}
 }
