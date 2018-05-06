@@ -41,36 +41,45 @@ public class Main {
 			input1 = input1.trim();
 			input2 = input2.trim();
 
-			for (int j = 0; j < input1.length() - 1; j++) {
+			// 특수 부호의 바로 앞이나 바로 뒤에 공백 추가
+			for (int j = 0; j < input1.length(); j++) {
 				for (int k = 0; k < expression.length; k++) {
 					if (input1.substring(j, j + 1).equals(expression[k])) {
-						System.out.println("input1 enter k: "+k);
 						String befor = input1.substring(0, j);
 						String after = input1.substring(j + 1, input1.length());
-//						if (j > 0) {
-							input1 = befor + " " + expression[k] + " " + after;
-//						}
-							
+						input1 = befor + " " + expression[k] + " " + after;
+						j += 2;
+						break;
+					}
+				}
+			}
+
+			for (int j = 0; j < input2.length(); j++) {
+				for (int k = 0; k < expression.length; k++) {
+					if (input2.substring(j, j + 1).equals(expression[k])) {
+						String befor = input2.substring(0, j);
+						String after = input2.substring(j + 1, input2.length());
+						input2 = befor + " " + expression[k] + " " + after;
+						j += 2;
+						break;
 					}
 				}
 			}
 
 			// 연속되는 공백 제거
-//			while (input1.contains("  ")) {
-//				input1 = input1.replaceAll("  ", " ");
-//			}
-//			while (input2.contains("  ")) {
-//				input2 = input2.replaceAll("  ", " ");
-//			}
+			while (input1.contains("  ")) {
+				input1 = input1.replaceAll("  ", " ");
+			}
+			while (input2.contains("  ")) {
+				input2 = input2.replaceAll("  ", " ");
+			}
 
-			System.out.println("input1: " + input1);
-			System.out.println("input2: " + input2);
 			if (input1.equals(input2)) {
 				System.out.println("Data Set " + (i + 1) + ": equal");
 			} else {
 				System.out.println("Data Set " + (i + 1) + ": not equal");
 			}
-			System.out.println("----------------");
+			System.out.println();
 
 		}
 	}
