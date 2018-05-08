@@ -38,23 +38,16 @@ public class Main {
 		int[] result = new int[9];
 		int beforeIndex = 0;
 		for (int i = 0; i < list.size(); i++) {
-			System.out.println("list.get(" + i + ").getIndex(): " + list.get(i).getIndex() + " list.get(i).getValue(): " + list.get(i).getValue());
-			// System.out.println("beforeIndex: "+beforeIndex);
 			if (i != 0) {
 				if (list.get(i).getValue() == list.get(i - 1).getValue()) {
-					result[list.get(i).getIndex()] = list.get(beforeIndex).getIndex() + 1;
+					result[list.get(i).getNumber()] = beforeIndex + 1;
 				} else {
-					// System.out.println("enter");
-					beforeIndex = i;
-					result[list.get(i).getIndex()] = list.get(i).getIndex() + 1;
+					beforeIndex++;
+					result[list.get(i).getNumber()] = beforeIndex + 1;
 				}
 			} else {
-				beforeIndex = i;
-				result[list.get(i).getIndex()] = list.get(i).getIndex() + 1;
+				result[list.get(i).getNumber()] = i + 1;
 			}
-
-			// System.out.println("result["+list.get(i).getIndex()+"]: "+
-			// result[list.get(i).getIndex()]);
 		}
 
 		for (int i = 0; i < result.length; i++) {
@@ -64,25 +57,23 @@ public class Main {
 }
 
 class mySort implements Comparator<Pair> {
-
 	@Override
 	public int compare(Pair o1, Pair o2) {
 		return o1.getValue() - o2.getValue();
 	}
-
 }
 
 class Pair {
-	private int index;
+	private int number;
 	private int value;
 
-	Pair(int index, int value) {
-		this.index = index;
+	Pair(int number, int value) {
+		this.number = number;
 		this.value = value;
 	}
 
-	public int getIndex() {
-		return index;
+	public int getNumber() {
+		return number;
 	}
 
 	public int getValue() {
