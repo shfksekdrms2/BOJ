@@ -28,7 +28,7 @@ public class Main {
 				}
 			}
 		}
-		
+
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
 				System.out.print(arr[i][j] + " ");
@@ -36,7 +36,7 @@ public class Main {
 			System.out.println();
 		}
 		System.out.println("-----------");
-		
+
 		ArrayList<Integer> list = new ArrayList<>();
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
@@ -45,12 +45,10 @@ public class Main {
 				}
 			}
 		}
-		
+
 		for (Integer integer : list) {
-			System.out.print(integer+" ");
+			System.out.print(integer + " ");
 		}
-
-
 
 	}
 
@@ -58,7 +56,7 @@ public class Main {
 
 	private static int findAreaRange(int[][] arr, int row, int col) {
 
-		System.out.println("row: "+row+" col: "+col);
+		System.out.println("row: " + row + " col: " + col);
 		arr[row][col] = 1;
 		int result = 1;
 		for (int i = 0; i < position.length; i++) {
