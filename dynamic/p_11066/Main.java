@@ -1,4 +1,4 @@
-package backjoon.BOJ.dynamicBasic.p_11066;
+package backjoon.BOJ.dynamic.p_11066;
 
 import java.util.Scanner;
 
