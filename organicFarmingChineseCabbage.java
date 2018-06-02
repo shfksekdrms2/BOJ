@@ -1,4 +1,4 @@
-package backjoon;
+package backjoon.BOJ;
 
 import java.util.Scanner;
 //1012
@@ -49,22 +49,22 @@ public class organicFarmingChineseCabbage {
 				result[t]++;
 				check = true;
 			}
-			//¿ìÃø
+			//ï¿½ï¿½ï¿½ï¿½
 			if((positionY+1) < arr[t].length && arr[positionX][positionY+1]==1){
 //				System.out.println("right");
 				dfs(arr, visit, t, positionX, positionY+1, check);
 			}
-			//¾Æ·¡
+			//ï¿½Æ·ï¿½
 			if((positionX+1) < arr.length && arr[positionX+1][positionY]==1){
 //				System.out.println("bottom");
 				dfs(arr, visit, t, positionX+1, positionY, check);
 			}
-			//ÁÂÃø
+			//ï¿½ï¿½ï¿½ï¿½
 			if((positionY-1) >= 0 && arr[positionX][positionY-1]==1){
 //				System.out.println("left");
 				dfs(arr, visit, t, positionX, positionY-1, check);
 			}
-			//À§
+			//ï¿½ï¿½
 			if((positionX-1) >= 0 && arr[positionX-1][positionY]==1){
 //				System.out.println("top");
 				dfs(arr, visit, t, positionX-1, positionY, check);
