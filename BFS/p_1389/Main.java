@@ -18,30 +18,30 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		relation = new int[n][n];
-		bool = new boolean[relation.length];
+		bool = new boolean[n];
 		int m = sc.nextInt();
 
+		int row, col;
 		for (int i = 0; i < m; i++) {
-			int row = sc.nextInt() - 1;
-			int col = sc.nextInt() - 1;
+			row = sc.nextInt() - 1;
+			col = sc.nextInt() - 1;
 			relation[row][col] = relation[col][row] = 1;
 		}
 
-		int minRelation = Integer.MAX_VALUE;
+		long minRelation = Integer.MAX_VALUE;
 		int number = 0;
-		int result;
-		for (int i = 0; i < m; i++) {
+		long result;
+		for (int i = 0; i < n; i++) {
 			if (minRelation > (result = sumBFS(relation, i))) {
 				number = i + 1;
 				minRelation = result;
 			}
 		}
 		System.out.println(number);
-
 	}
 
-	private static int sumBFS(int[][] relation, int start) {
-		int sum = 0;
+	private static long sumBFS(int[][] relation, int start) {
+		long sum = 0;
 		for (int i = 0; i < relation.length; i++) {
 			if (start == i) {
 				continue;
@@ -51,12 +51,12 @@ public class Main {
 		return sum;
 	}
 
-	private static int BFS(int[][] relation, int start, int dest) {
+	private static long BFS(int[][] relation, int start, int dest) {
 		Queue<Pair> queue = new LinkedList<Pair>();
 		queue.add(new Pair(start, 0));
 		Arrays.fill(bool, false);
 		bool[start] = true;
-		int sum = 0;
+		long sum = 0;
 
 		while (!queue.isEmpty()) {
 			int currPosition = queue.peek().getPosition();
@@ -73,7 +73,6 @@ public class Main {
 						break;
 					}
 				}
-
 			}
 		}
 
@@ -83,9 +82,9 @@ public class Main {
 
 class Pair {
 	private int position;
-	private int sum;
+	private long sum;
 
-	Pair(int position, int sum) {
+	Pair(int position, long sum) {
 		this.position = position;
 		this.sum = sum;
 	}
@@ -94,7 +93,7 @@ class Pair {
 		return position;
 	}
 
-	public int getSum() {
+	public long getSum() {
 		return sum;
 	}
 
