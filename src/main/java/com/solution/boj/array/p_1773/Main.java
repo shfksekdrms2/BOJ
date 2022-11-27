@@ -1,4 +1,4 @@
-package backjoon.BOJ.array.p_1773;
+package com.solution.boj.array.p_1773;
 
 import java.util.Scanner;
 
