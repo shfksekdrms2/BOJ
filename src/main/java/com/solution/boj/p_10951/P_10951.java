@@ -7,7 +7,7 @@ import java.util.Scanner;
  *
  * @Author: jsj0828
  **/
-public class p_10951 {
+public class P_10951 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
